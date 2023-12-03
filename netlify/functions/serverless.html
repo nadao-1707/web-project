@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serverless Functions Example</title>
+</head>
+<body>
+    <h1>Serverless Functions Example</h1>
+
+    <h2>Hello Function</h2>
+    <p>This is the <code>hello.js</code> function:</p>
+    <pre>
+exports.handler = async (event, context) => {
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: 'Hello, this is a serverless function!' }),
+    };
+};
+    </pre>
+
+    <h2>Greet Function</h2>
+    <p>This is the <code>greet.js</code> function using Express:</p>
+    <pre>
+const express = require('express');
+const app = express();
+
+app.get('/greet/:name', (req, res) => {
+    const { name } = req.params;
+    res.json({ message: `Hello, ${name}! This is a serverless function using Express!` });
+});
+
+module.exports = app;
+    </pre>
+</body>
+</html>
