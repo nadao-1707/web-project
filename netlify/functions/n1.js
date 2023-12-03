@@ -1,16 +1,9 @@
-
-   // index.js
-   exports.handler = async (event, context) => {
-       const data = {
-           message: 'Hello, world!',
-           timestamp: new Date().toISOString()
-       };
-   
-       return {
-           statusCode: 200,
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(data)
-       };
-   };
+function getData() {
+    fetch('/api/data')
+        .then(response => response.json())
+        .then(data => {
+            const dataContainer = document.getElementById('dataContainer');
+            dataContainer.innerHTML = JSON.stringify(data);
+        })
+        .catch(error => console.error(error));
+}
